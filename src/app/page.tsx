@@ -1,5 +1,6 @@
 import Container from "@/components/Container";
 import Filter from "@/components/Filter";
+import Heading from "@/components/UIKit/Heading";
 
 import { VEHICLE_TYPES_URL } from "@/config/endpoints";
 import { basicFetch } from "@/helpers/basicFetch";
@@ -17,8 +18,7 @@ const Home = async () => {
 
   return (
     <Container>
-      <h1 className="text-xl text-orange-500 text-center mb-10">Vehicle filter</h1>
-
+      <Heading label="Vehicle filter" />
       <Filter vehicles={vehicles} years={years} />
     </Container>
   );

@@ -4,6 +4,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 
 import Container from "@/components/Container";
 import ModelList from "@/components/ModelList";
+import Heading from "@/components/UIKit/Heading";
 import ROUTES from "@/config/routes";
 
 import { VEHICLE_MODEL_URL, VEHICLE_TYPES_URL } from "@/config/endpoints";
@@ -43,7 +44,7 @@ const ResultPage: FC<IProps> = async ({ params }) => {
 
   return !isError && response ? (
     <Container>
-      <h1 className="text-xl text-orange-500 text-center mb-10">Models</h1>
+      <Heading label="Models" />
 
       <Link
         href={ROUTES.HOME}
