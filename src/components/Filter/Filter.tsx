@@ -16,8 +16,6 @@ const Filter: FC<IProps> = ({ vehicles, years }) => {
   const [makeId, setMakeId] = useState<number | null>(null);
   const [year, setYear] = useState<number | null>(null);
 
-  console.log(year, makeId);
-
   return (
     <>
       <div className="md:flex gap-10 ">

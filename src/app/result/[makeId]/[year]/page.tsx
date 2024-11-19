@@ -37,7 +37,6 @@ const ResultPage: FC<IProps> = async ({ params }) => {
 
   try {
     response = await basicFetch<Response<ModelType>>(VEHICLE_MODEL_URL(makeId, year));
-    console.log(response);
   } catch (_err) {
     isError = true;
   }

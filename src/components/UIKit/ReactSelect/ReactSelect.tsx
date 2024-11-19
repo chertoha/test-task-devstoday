@@ -1,7 +1,9 @@
-import { SelectOption } from "@/types/entities";
 import dynamic from "next/dynamic";
 import { FC } from "react";
+
+import { SelectOption } from "@/types/entities";
 import { SingleValue, StylesConfig } from "react-select";
+import FixedLoader from "../FixedLoader";
 
 const customStyles: StylesConfig = {
   control: (base, state) => ({
@@ -32,7 +34,7 @@ const customStyles: StylesConfig = {
 
 const Select = dynamic(() => import("react-select").then(mod => mod.default), {
   ssr: false,
-  loading: () => <div> Waiting for select data...</div>,
+  loading: () => <FixedLoader isLoading />,
 }) as unknown as React.ComponentType<{
   options: SelectOption[];
   onChange: (newValue: SingleValue<SelectOption>) => void;
