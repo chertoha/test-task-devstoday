@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { FC, Suspense, useState } from "react";
+import { FC, useState } from "react";
 import { SelectOption } from "@/types/entities";
 import ROUTES from "@/config/routes";
 import { SingleValue } from "react-select";
