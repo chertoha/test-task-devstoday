@@ -2,10 +2,11 @@ import Filter from "@/components/Filter";
 import { VEHICLE_TYPES_URL } from "@/config/endpoints";
 import { basicFetch } from "@/helpers/basicFetch";
 import { convertVehiclesToOptions, createYearsOptions } from "@/helpers/createSelectOptions";
-import { CarTypeResponse } from "@/types/responses";
+import { VehicleType } from "@/types/entities";
+import { Response } from "@/types/responses";
 
 const Home = async () => {
-  const response = await basicFetch<CarTypeResponse>(VEHICLE_TYPES_URL);
+  const response = await basicFetch<Response<VehicleType>>(VEHICLE_TYPES_URL);
 
   if (!response) return null;
 

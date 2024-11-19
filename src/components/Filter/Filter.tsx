@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { FC, useState } from "react";
+import { FC, Suspense, useState } from "react";
 import { SelectOption } from "@/types/entities";
 import ROUTES from "@/config/routes";
 import { SingleValue } from "react-select";
@@ -9,7 +9,7 @@ import LinkButton from "../LinkButton";
 
 const Select = dynamic(() => import("react-select").then(mod => mod.default), {
   ssr: false,
-  loading: () => null,
+  loading: () => <div> Waiting for select data...</div>,
 }) as unknown as React.ComponentType<{
   options: SelectOption[];
   onChange: (newValue: SingleValue<SelectOption>) => void;

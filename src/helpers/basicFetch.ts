@@ -35,11 +35,22 @@ export const basicFetch = async <T>(
     next,
   });
 
+  // console.log(response);
+
   if (!response.ok) {
     let message = "Failed to fetch data";
-    const errorResponse = await response.json();
-    message = `CHE LOG -> ${errorResponse?.message} / status ${response.status}` || message;
-    throw new ResponseError(message, errorResponse, response.status);
+    let resp = response;
+
+    if (response.status === 403) {
+      message = "Forbidden";
+    }
+
+    if (response.headers.get("content-type") === "application/json") {
+      const errorResponse = await response.json();
+      resp = errorResponse;
+      message = `CHE LOG -> ${errorResponse?.message} / status ${response.status}` || message;
+    }
+    throw new ResponseError(message, resp, response.status);
   }
 
   const contentType = response.headers.get("content-type");
