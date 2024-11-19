@@ -1,8 +1,6 @@
-import { VehicleType } from "./entities";
-
-export type CarTypeResponse = {
+export type Response<T> = {
   Count: number;
   Message: string;
-  Results: VehicleType[];
+  Results: T[];
   SearchCriteria: string;
 };

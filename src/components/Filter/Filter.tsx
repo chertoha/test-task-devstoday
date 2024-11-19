@@ -9,7 +9,7 @@ import LinkButton from "../LinkButton";
 
 const Select = dynamic(() => import("react-select").then(mod => mod.default), {
   ssr: false,
-  loading: () => null,
+  loading: () => <div> Waiting for select data...</div>,
 }) as unknown as React.ComponentType<{
   options: SelectOption[];
   onChange: (newValue: SingleValue<SelectOption>) => void;
