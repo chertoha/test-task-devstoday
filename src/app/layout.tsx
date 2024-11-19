@@ -1,3 +1,4 @@
+import FixedLoader from "@/components/UIKit/FixedLoader";
 import "../styles/globals.css";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
@@ -23,8 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/android-icon-192x192.png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="./apple-icon-180x180.png" sizes="180x180" />
+      </head>
+
       <body className={`${opensans.variable} antialiased`}>
-        <Suspense fallback={<div>Loading content ... </div>}>
+        <Suspense fallback={<FixedLoader isLoading />}>
           <section className="py-16">{children}</section>
         </Suspense>
       </body>

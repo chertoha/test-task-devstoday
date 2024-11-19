@@ -1,12 +1,11 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { FC, useState } from "react";
-import { SelectOption } from "@/types/entities";
+
 import ROUTES from "@/config/routes";
-import { SingleValue, StylesConfig } from "react-select";
 import LinkButton from "../LinkButton";
 import ReactSelect from "../UIKit/ReactSelect";
+import { SelectOption } from "@/types/entities";
 
 interface IProps {
   vehicles: SelectOption[];
