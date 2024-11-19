@@ -35,8 +35,6 @@ export const basicFetch = async <T>(
     next,
   });
 
-  // console.log(response);
-
   if (!response.ok) {
     let message = "Failed to fetch data";
     let resp = response;

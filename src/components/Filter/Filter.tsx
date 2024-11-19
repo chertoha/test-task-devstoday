@@ -1,19 +1,11 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { FC, useState } from "react";
-import { SelectOption } from "@/types/entities";
-import ROUTES from "@/config/routes";
-import { SingleValue } from "react-select";
-import LinkButton from "../LinkButton";
 
-const Select = dynamic(() => import("react-select").then(mod => mod.default), {
-  ssr: false,
-  loading: () => <div> Waiting for select data...</div>,
-}) as unknown as React.ComponentType<{
-  options: SelectOption[];
-  onChange: (newValue: SingleValue<SelectOption>) => void;
-}>;
+import ROUTES from "@/config/routes";
+import LinkButton from "../LinkButton";
+import ReactSelect from "../UIKit/ReactSelect";
+import { SelectOption } from "@/types/entities";
 
 interface IProps {
   vehicles: SelectOption[];
@@ -24,26 +16,30 @@ const Filter: FC<IProps> = ({ vehicles, years }) => {
   const [makeId, setMakeId] = useState<number | null>(null);
   const [year, setYear] = useState<number | null>(null);
 
-  console.log(year, makeId);
-
   return (
     <>
-      <div className="mb-4">
-        <Select
-          options={vehicles}
-          onChange={option => {
-            setMakeId(option ? option.value : null);
-          }}
-        />
-      </div>
+      <div className="md:flex gap-10 ">
+        <label className="mb-4 w-full block max-w-[400px]">
+          <span className="mb-2 pl-1">Vehicle</span>
 
-      <div className="mb-4">
-        <Select
-          options={years}
-          onChange={option => {
-            setYear(option ? option.value : null);
-          }}
-        />
+          <ReactSelect
+            options={vehicles}
+            onChange={option => {
+              setMakeId(option ? option.value : null);
+            }}
+          />
+        </label>
+
+        <label className="mb-8 w-[200px] block">
+          <span className="mb-2 pl-1">Year</span>
+
+          <ReactSelect
+            options={years}
+            onChange={option => {
+              setYear(option ? option.value : null);
+            }}
+          />
+        </label>
       </div>
 
       <LinkButton

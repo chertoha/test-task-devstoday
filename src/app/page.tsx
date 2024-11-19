@@ -1,4 +1,7 @@
+import Container from "@/components/Container";
 import Filter from "@/components/Filter";
+import Heading from "@/components/UIKit/Heading";
+
 import { VEHICLE_TYPES_URL } from "@/config/endpoints";
 import { basicFetch } from "@/helpers/basicFetch";
 import { convertVehiclesToOptions, createYearsOptions } from "@/helpers/createSelectOptions";
@@ -14,9 +17,10 @@ const Home = async () => {
   const years = createYearsOptions();
 
   return (
-    <div className="">
+    <Container>
+      <Heading label="Vehicle filter" />
       <Filter vehicles={vehicles} years={years} />
-    </div>
+    </Container>
   );
 };
 

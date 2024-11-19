@@ -27,6 +27,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        accent: "rgb(249, 115, 22)",
       },
     },
   },
