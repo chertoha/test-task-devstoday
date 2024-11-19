@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/Container";
 import { useEffect } from "react";
 
 const Error = ({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) => {
@@ -17,12 +18,16 @@ const Error = ({ error, reset }: { error: Error & { digest?: string }; reset: ()
   const isForbidden = error.message.includes("Forbidden");
 
   return isForbidden ? (
-    <>
-      Sorry, this API do not allow many requests. If you see this message, please wait 5 minutes.
-      Possibly API server will respond{" "}
-    </>
+    <Container>
+      <p className="text-accent">
+        Sorry, this API do not allow many requests. If you see this message, please wait 5 minutes.
+        Possibly API server will respond
+      </p>
+    </Container>
   ) : (
-    <div className="">Server Error</div>
+    <Container>
+      <p className="text-accent">Server Error</p>
+    </Container>
   );
 };
 
