@@ -24,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${opensans.variable} antialiased`}>
-        <Suspense fallback={<div>Loading content ... </div>}>{children}</Suspense>
+        <Suspense fallback={<div>Loading content ... </div>}>
+          <section className="py-16">{children}</section>
+        </Suspense>
       </body>
     </html>
   );

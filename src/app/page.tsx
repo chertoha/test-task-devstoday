@@ -1,3 +1,4 @@
+import Container from "@/components/Container";
 import Filter from "@/components/Filter";
 import { VEHICLE_TYPES_URL } from "@/config/endpoints";
 import { basicFetch } from "@/helpers/basicFetch";
@@ -14,9 +15,11 @@ const Home = async () => {
   const years = createYearsOptions();
 
   return (
-    <div className="">
+    <Container>
+      <h1 className="text-xl text-orange-500 text-center mb-10">Vehicle filter</h1>
+
       <Filter vehicles={vehicles} years={years} />
-    </div>
+    </Container>
   );
 };
 

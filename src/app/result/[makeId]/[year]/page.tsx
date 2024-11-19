@@ -1,10 +1,16 @@
+import Link from "next/link";
+import { FC } from "react";
+import { IoIosArrowRoundBack } from "react-icons/io";
+
+import Container from "@/components/Container";
 import ModelList from "@/components/ModelList";
+import ROUTES from "@/config/routes";
+
 import { VEHICLE_MODEL_URL, VEHICLE_TYPES_URL } from "@/config/endpoints";
 import { basicFetch } from "@/helpers/basicFetch";
 import { createYearsOptions } from "@/helpers/createSelectOptions";
 import { ModelType, VehicleType } from "@/types/entities";
 import { Response } from "@/types/responses";
-import { FC } from "react";
 
 interface IProps {
   params: Promise<{ makeId: string; year: string }>;
@@ -37,9 +43,22 @@ const ResultPage: FC<IProps> = async ({ params }) => {
   }
 
   return !isError && response ? (
-    <>
-      <ModelList list={response.Results} />
-    </>
+    <Container>
+      <h1 className="text-xl text-orange-500 text-center mb-10">Models</h1>
+
+      <Link
+        href={ROUTES.HOME}
+        className="inline-flex gap-1 items-center text-gray-600 text-lg mb-10 hover:text-accent transition-colors duration-300 ease-in-out"
+      >
+        <IoIosArrowRoundBack size={24} className="block" /> Back
+      </Link>
+
+      {response.Count !== 0 ? (
+        <ModelList list={response.Results} />
+      ) : (
+        <div className="text-accent text-center">No models</div>
+      )}
+    </Container>
   ) : (
     <>Error</>
   );
